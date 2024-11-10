@@ -20,6 +20,7 @@ public class StringParser {
 
     public static List<String> parseToTokens(final String value, final String delimiter) {
         return Arrays.stream(value.split(delimiter, SPLIT_LIMIT))
+                .map(String::trim)
                 .toList();
     }
 
