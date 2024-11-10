@@ -15,6 +15,10 @@ public class ProductRepository {
         return BillPughSingleton.INSTANCE;
     }
 
+    public void clear() {
+        repository.clear();
+    }
+
     public void save(final Long id, final Product product) {
         repository.put(id, product);
     }
