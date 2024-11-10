@@ -10,16 +10,18 @@ import store.promotion.domain.PromotionType;
 
 public class PurchaseProductFixture {
 
-    public static final Promotion PROMOTION_BUY_2_GET_1_FREE = new Promotion(PromotionType.BUY_2_GET_1_FREE,
-            new PromotionDateTime("2024-11-02", "2024-12-21"), 2,
-            1);
+    public static final PurchaseProduct PURCHASE_IN_TIME_PRODUCT = generatePurchaseProduct("0000-11-01", "9999-11-11", "콜라");
+    public static final List<PurchaseProduct> PURCHASE_PRODUCTS = List.of(generatePurchaseProduct("0000-11-01", "9999-11-11", "콜라"));
 
-    public static final PurchaseProductInfo PRODUCT_INFO = new PurchaseProductInfo("콜라", 1000, 1000
-            , PROMOTION_BUY_2_GET_1_FREE);
 
-    public static final ProductQuantity PRODUCT_QUANTITY = new ProductQuantity(0, 5, 0);
+    private static PurchaseProduct generatePurchaseProduct(final String startTime, final String endTime, final String name) {
+        final Promotion promotion = new Promotion(PromotionType.BUY_2_GET_1_FREE,
+                new PromotionDateTime(startTime, endTime), 2,
+                1);
+        final PurchaseProductInfo purchaseProductInfo = new PurchaseProductInfo(name, 1000, 1000
+                , promotion);
+        final ProductQuantity productQuantity = new ProductQuantity(1, 5, 1);
+        return new PurchaseProduct(purchaseProductInfo, productQuantity);
 
-    public static final List<PurchaseProduct> PURCHASE_PRODUCTS = List.of(
-            new PurchaseProduct(PRODUCT_INFO, PRODUCT_QUANTITY)
-    );
+    }
 }
