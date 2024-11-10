@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.product.Product;
-import store.domain.product.ProductRepository;
-import store.domain.promotion.Promotion;
-import store.domain.promotion.PromotionRepository;
+import store.product.domain.Product;
+import store.product.domain.ProductRepository;
+import store.promotion.domain.Promotion;
+import store.promotion.domain.PromotionRepository;
 
 class InitialDataLoaderTest {
 
