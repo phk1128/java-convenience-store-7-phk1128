@@ -2,6 +2,7 @@ package store.promotion.domain;
 
 public class Promotion {
 
+    private static final int ZERO = 0;
     private final PromotionType type;
     private final PromotionDateTime dateTime;
     private final int buy;
@@ -19,7 +20,7 @@ public class Promotion {
         if (dateTime.isInTime()) {
             return quantity % (buy + get);
         }
-        return 0;
+        return ZERO;
     }
 
     public String getPromotionName() {
@@ -30,7 +31,7 @@ public class Promotion {
         if (dateTime.isInTime()) {
             return quantity / (buy + get);
         }
-        return 0;
+        return ZERO;
     }
 
     public boolean isInPromotionTime() {
@@ -43,7 +44,7 @@ public class Promotion {
 
     public boolean canPromotion(final int quantity) {
         return quantity >= buy
-                && quantity % (buy + get) != 0
+                && quantity % (buy + get) != ZERO
                 && dateTime.isInTime();
     }
 
