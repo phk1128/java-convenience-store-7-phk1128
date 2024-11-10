@@ -1,13 +1,11 @@
 package store.product.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.promotion.domain.Promotion;
-import store.promotion.domain.PromotionDateTime;
-import store.promotion.domain.PromotionType;
+import store.product.fixture.ProductFixture;
 
 class ProductTest {
 
@@ -30,16 +28,8 @@ class ProductTest {
     @Test
     void canReceiveMorePromotionTest() {
         //given
-        final PromotionType buy2Get1Free = PromotionType.BUY_2_GET_1_FREE;
-        final PromotionDateTime promotionDateTime1 = new PromotionDateTime("2024-11-01", "2024-11-30");
-        final Promotion promotion1 = new Promotion(buy2Get1Free, promotionDateTime1, 2, 1);
-        final ProductInfo productInfo1 = new ProductInfo("콜라", 1000, promotion1);
-        final Product product1 = new Product(1L, productInfo1, 10);
-        final PromotionType mdPick = PromotionType.MD_PICK;
-        final PromotionDateTime promotionDateTime2 = new PromotionDateTime("2024-12-01", "2024-12-28");
-        final Promotion promotion2 = new Promotion(mdPick, promotionDateTime2, 1, 1);
-        final ProductInfo productInfo2 = new ProductInfo("컵라면", 1500, promotion2);
-        final Product product2 = new Product(2L, productInfo2, 10);
+        final Product product1 = ProductFixture.BUY_2_GET_1_FREE_IN_TIME_PRODUCT;
+        final Product product2 = ProductFixture.BUY_1_GET_1_FREE_OUT_TIME_PRODUCT;
 
         //when
         final boolean result1 = product1.canReceiveMorePromotion(product1.getBuyQuantity());
@@ -56,11 +46,7 @@ class ProductTest {
     @Test
     void calculateRemainingQuantityTest() {
         //given
-        final PromotionType buy2Get1Free = PromotionType.BUY_2_GET_1_FREE;
-        final PromotionDateTime promotionDateTime = new PromotionDateTime("2024-11-01", "2024-11-30");
-        final Promotion promotion = new Promotion(buy2Get1Free, promotionDateTime, 2, 1);
-        final ProductInfo productInfo = new ProductInfo("콜라", 1000, promotion);
-        final Product product = new Product(1L, productInfo, 10);
+        final Product product = ProductFixture.BUY_2_GET_1_FREE_IN_TIME_PRODUCT;
 
         //when
         final int quantity = product.calculateRemainingQuantity(7);
