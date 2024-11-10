@@ -1,4 +1,4 @@
-package store.domain.product;
+package store.product.domain;
 
 import store.domain.promotion.Promotion;
 

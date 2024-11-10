@@ -1,4 +1,4 @@
-package store.domain.promotion;
+package store.promotion.domain;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -11,7 +11,6 @@ public enum PromotionType {
     NONE("");
 
     private final String name;
-
 
     PromotionType(final String name) {
         this.name = name;

@@ -1,4 +1,4 @@
-package store.domain.promotion;
+package store.promotion.domain;
 
 import java.util.List;
 import java.util.Map;
