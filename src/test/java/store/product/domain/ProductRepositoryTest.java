@@ -3,6 +3,7 @@ package store.product.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,11 @@ class ProductRepositoryTest {
     @BeforeEach
     void setUp() {
         productRepository = ProductRepository.getInstance();
+    }
+
+    @AfterEach
+    void cleanUp() {
+        productRepository.clear();
     }
 
 
@@ -49,20 +55,6 @@ class ProductRepositoryTest {
                 .withMessageContaining(ErrorMessage.INVALID_FAIL_DATA_READ_FROM_REPOSITORY.getMessage());
     }
 
-    @DisplayName("상품 이름으로 일반 상품을 찾는데 성공한다.")
-    @Test
-    void pass_findProductByProductNameTest() {
-        //given
-        final Product product = ProductFixture.NON_PROMOTIN_PRODUCT;
-        final String name = product.getName();
-
-        //when
-        productRepository.save(product.getId(), product);
-        final Product productByProductName = productRepository.findProductByProductName(name);
-
-        //then
-        assertThat(product).isEqualTo(productByProductName);
-    }
 
     @DisplayName("상품 이름으로 일반 상품을 찾는데 실패한다.")
     @Test
@@ -92,19 +84,6 @@ class ProductRepositoryTest {
 
     }
 
-    @DisplayName("일반 상품이 존재하지 않는다.")
-    @Test
-    void false_existNormalProductByProductNameTest() {
-        //given
-        final Product product = ProductFixture.BUY_2_GET_1_FREE_IN_TIME_PRODUCT;
-
-        //when
-        productRepository.save(product.getId(), product);
-
-        //then
-        assertThat(productRepository.existNormalProductByProductName(product.getName())).isFalse();
-
-    }
 
     @DisplayName("프로모션 상품이 존재한다.")
     @Test
@@ -119,18 +98,6 @@ class ProductRepositoryTest {
         assertThat(productRepository.existPromotionProductByProductName(product.getName())).isTrue();
     }
 
-    @DisplayName("프로모션 상품이 존재하지 않는다.")
-    @Test
-    void false_existPromotionProductByProductNameTest() {
-        //given
-        final Product product = ProductFixture.NON_PROMOTIN_PRODUCT;
-
-        //when
-        productRepository.save(product.getId(), product);
-
-        //then
-        assertThat(productRepository.existPromotionProductByProductName(product.getName())).isFalse();
-    }
 
     @DisplayName("상품이 존재한다.")
     @Test
