@@ -68,7 +68,7 @@ public class PromotionService {
         }
         final int quantity = product.getTotalQuantity();
         final Product promotionProduct = productRepository.findPromotionProductByProductName(name);
-        final int remainingQuantity = promotionProduct.getRemainingQuantity(product.getPromotionQuantity());
+        final int remainingQuantity = promotionProduct.calculateRemainingQuantity(product.getPromotionQuantity());
         return promotionProduct.getQuantity() > quantity && promotionProduct.canReceiveMorePromotion(remainingQuantity);
     }
 

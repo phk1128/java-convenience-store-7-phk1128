@@ -55,7 +55,7 @@ public class PurchaseProductGenerator {
     private int calculateNonPromotionQuantity(final PurchaseProductRequest request) {
         final Product promotionProduct = productRepository.findPromotionProductByProductName(request.name());
         final int minQuantity = Math.min(request.quantity(), promotionProduct.getQuantity());
-        int nonPromotionQuantity = promotionProduct.getRemainingQuantity(minQuantity);
+        int nonPromotionQuantity = promotionProduct.calculateRemainingQuantity(minQuantity);
         if (request.quantity() < promotionProduct.getQuantity()
                 && nonPromotionQuantity >= promotionProduct.getBuyQuantity()) {
             nonPromotionQuantity = ZERO;

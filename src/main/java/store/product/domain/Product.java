@@ -36,7 +36,7 @@ public class Product {
     }
 
 
-    public int getRemainingQuantity(final int quantity) {
+    public int calculateRemainingQuantity(final int quantity) {
         final Promotion promotion = productInfo.promotion();
         if (!Objects.equals(promotion, null)) {
             return promotion.getRemainingQuantity(quantity);
