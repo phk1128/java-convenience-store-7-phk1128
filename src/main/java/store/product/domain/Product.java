@@ -1,34 +1,63 @@
 package store.product.domain;
 
-import store.domain.promotion.Promotion;
+import java.util.Objects;
+import store.promotion.domain.Promotion;
 
 public class Product {
 
-    private final String name;
-    private final int price;
-    private final Promotion promotion;
+    private final long id;
+    private final ProductInfo productInfo;
     private int quantity;
 
-    public Product(final String name, final int price, final Promotion promotion) {
-        this.name = name;
-        this.price = price;
-        this.promotion = promotion;
+    public Product(final Long id, final ProductInfo productInfo, final int quantity) {
+        this.id = id;
+        this.productInfo = productInfo;
+        this.quantity = quantity;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 
     public void updateQuantity(final int quantity) {
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public String getPromotionName() {
+        final Promotion promotion = productInfo.promotion();
+        if (Objects.equals(promotion, null)) {
+            return "";
+        }
+        return promotion.getPromotionName();
+    }
+
+    public boolean canReceiveMorePromotion(final int quantity) {
+        return productInfo.promotion().canPromotion(quantity);
+    }
+
+
+    public int getRemainingQuantity(final int quantity) {
+        final Promotion promotion = productInfo.promotion();
+        if (!Objects.equals(promotion, null)) {
+            return promotion.getRemainingQuantity(quantity);
+        }
+        return 0;
+    }
+
+    public int getBuyQuantity() {
+        return productInfo.promotion().getBuy();
     }
 
     public int getPrice() {
-        return price;
+        return productInfo.price();
+    }
+
+    public String getName() {
+        return productInfo.name();
     }
 
     public Promotion getPromotion() {
-        return promotion;
+        return productInfo.promotion();
     }
 
     public int getQuantity() {
