@@ -27,7 +27,7 @@ public class StringParser {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("데이터 초기화 과정에서 문제가 발생했습니다. 애플리케이션 재실행 해주세요.");
+            throw new InvalidWrongInputException(ErrorMessage.INVALID_WRONG_INPUT);
         }
     }
 }
