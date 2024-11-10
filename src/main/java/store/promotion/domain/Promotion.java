@@ -45,7 +45,7 @@ public class Promotion {
     public boolean canPromotion(final int quantity) {
         return quantity >= buy
                 && quantity % (buy + get) != ZERO
-                && dateTime.isInTime();
+                && isInPromotionTime();
     }
 
     public int getBuy() {
