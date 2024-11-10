@@ -20,8 +20,8 @@ class InitialDataLoaderTest {
 
     @BeforeEach
     void setUp() {
-        promotionRepository = new PromotionRepository();
-        productRepository = new ProductRepository();
+        promotionRepository = PromotionRepository.getInstance();
+        productRepository = ProductRepository.getInstance();
         initialDataLoader = new InitialDataLoader(promotionRepository, productRepository);
     }
 
