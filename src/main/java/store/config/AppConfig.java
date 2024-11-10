@@ -40,7 +40,6 @@ public class AppConfig {
         return PromotionRepository.getInstance();
     }
 
-
     private PurchaseProductGenerator purchaseProductGenerator() {
         return new PurchaseProductGenerator(productRepository());
     }
