@@ -11,10 +11,6 @@ public class ProductRepository {
 
     private final Map<Long, Product> repository = new ConcurrentHashMap<>();
 
-    public static ProductRepository getInstance() {
-        return BillPughSingleton.INSTANCE;
-    }
-
     public void clear() {
         repository.clear();
     }
@@ -79,14 +75,6 @@ public class ProductRepository {
 
     private boolean isMatchedProductName(final String name, final Product product) {
         return Objects.equals(product.getName(), name);
-    }
-
-    private ProductRepository() {
-
-    }
-
-    private static class BillPughSingleton {
-        private static final ProductRepository INSTANCE = new ProductRepository();
     }
 
 }

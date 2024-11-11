@@ -25,8 +25,8 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
-        productRepository = ProductRepository.getInstance();
-        PromotionRepository promotionRepository = PromotionRepository.getInstance();
+        productRepository = new ProductRepository();
+        PromotionRepository promotionRepository = new PromotionRepository();
         final InitialDataLoader initialDataLoader = new InitialDataLoader(promotionRepository, productRepository);
         initialDataLoader.initialize();
         final PurchaseProductGenerator purchaseProductGenerator = new PurchaseProductGenerator(productRepository);

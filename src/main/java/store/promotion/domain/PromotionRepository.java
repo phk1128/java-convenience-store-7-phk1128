@@ -10,10 +10,6 @@ public class PromotionRepository {
 
     private final Map<Long, Promotion> repository = new ConcurrentHashMap<>();
 
-    public static PromotionRepository getInstance() {
-        return BillPughSingleton.INSTANCE;
-    }
-
     public void save(final Long id, final Promotion promotion) {
         repository.put(id, promotion);
     }
@@ -29,11 +25,4 @@ public class PromotionRepository {
                 .toList();
     }
 
-    private PromotionRepository() {
-
-    }
-
-    private static class BillPughSingleton {
-        private static final PromotionRepository INSTANCE = new PromotionRepository();
-    }
 }

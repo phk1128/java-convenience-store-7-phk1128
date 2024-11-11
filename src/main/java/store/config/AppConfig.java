@@ -21,6 +21,14 @@ import store.view.console.ConsoleInputView;
 
 public class AppConfig {
 
+    private final ProductRepository productRepository;
+    private final PromotionRepository promotionRepository;
+
+    public AppConfig(final ProductRepository productRepository, final PromotionRepository promotionRepository) {
+        this.productRepository = productRepository;
+        this.promotionRepository = promotionRepository;
+    }
+
     public Convenience convenience() {
         return new Convenience(
                 productController(),
@@ -31,36 +39,28 @@ public class AppConfig {
 
     public InitialDataLoader initialDataLoader() {
         return new InitialDataLoader(
-                promotionRepository(),
-                productRepository()
+                promotionRepository,
+                productRepository
         );
     }
 
-    private ProductRepository productRepository() {
-        return ProductRepository.getInstance();
-    }
-
-    private PromotionRepository promotionRepository() {
-        return PromotionRepository.getInstance();
-    }
-
     private PurchaseProductGenerator purchaseProductGenerator() {
-        return new PurchaseProductGenerator(productRepository());
+        return new PurchaseProductGenerator(productRepository);
     }
 
     private ProductService productService() {
         return new ProductService(
-                productRepository(),
+                productRepository,
                 purchaseProductGenerator()
         );
     }
 
     private PromotionService promotionService() {
-        return new PromotionService(productRepository());
+        return new PromotionService(productRepository);
     }
 
     private PaymentService paymentService() {
-        return new PaymentService(productRepository());
+        return new PaymentService(productRepository);
     }
 
     private InputView inputView() {
