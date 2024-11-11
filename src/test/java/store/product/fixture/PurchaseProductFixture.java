@@ -1,4 +1,4 @@
-package store.domain.product.fixture;
+package store.product.fixture;
 
 import java.util.List;
 import store.product.domain.PurchaseProductInfo;
