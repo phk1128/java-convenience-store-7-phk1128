@@ -7,19 +7,19 @@ import store.payment.dto.BenefitProductReceipt;
 import store.payment.dto.PaymentReceipt;
 import store.payment.dto.PurchaseProductReceipt;
 import store.payment.service.PaymentService;
+import store.payment.view.PaymentOutputView;
 import store.product.domain.PurchaseProduct;
 import store.state.PurchaseState;
 import store.util.LoopTemplate;
 import store.view.InputView;
-import store.view.OutputView;
 
 public class PaymentController {
 
     private final InputView inputView;
-    private final OutputView outputView;
+    private final PaymentOutputView outputView;
     private final PaymentService paymentService;
 
-    public PaymentController(final InputView inputView, final OutputView outputView,
+    public PaymentController(final InputView inputView, final PaymentOutputView outputView,
                              final PaymentService paymentService) {
         this.inputView = inputView;
         this.outputView = outputView;

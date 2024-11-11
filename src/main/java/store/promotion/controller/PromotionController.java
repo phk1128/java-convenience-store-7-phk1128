@@ -6,18 +6,18 @@ import store.product.domain.PurchaseProduct;
 import store.promotion.dto.NonPromotionProduct;
 import store.promotion.dto.PromotionProduct;
 import store.promotion.service.PromotionService;
+import store.promotion.view.PromotionOutputView;
 import store.state.PurchaseState;
 import store.util.LoopTemplate;
 import store.view.InputView;
-import store.view.OutputView;
 
 public class PromotionController {
 
     private final InputView inputView;
-    private final OutputView outputView;
+    private final PromotionOutputView outputView;
     private final PromotionService promotionService;
 
-    public PromotionController(final InputView inputView, final OutputView outputView,
+    public PromotionController(final InputView inputView, final PromotionOutputView outputView,
                                final PromotionService promotionService) {
         this.inputView = inputView;
         this.outputView = outputView;

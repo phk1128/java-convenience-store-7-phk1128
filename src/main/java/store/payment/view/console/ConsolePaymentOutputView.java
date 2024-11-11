@@ -1,55 +1,33 @@
-package store.view.console;
-
-import static store.constant.OutputMessage.*;
+package store.payment.view.console;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import store.constant.OutputMessage;
 import store.payment.dto.BenefitProductReceipt;
 import store.payment.dto.PaymentReceipt;
 import store.payment.dto.PurchaseProductReceipt;
-import store.promotion.dto.NonPromotionProduct;
-import store.promotion.dto.PromotionProduct;
-import store.product.dto.ProductStatus;
-import store.view.OutputView;
+import store.payment.view.PaymentOutputView;
 
-public class ConsoleOutputView implements OutputView {
+public class ConsolePaymentOutputView implements PaymentOutputView {
 
-    @Override
-    public void printIntro() {
-        printlnMessage(OutputMessage.LINE_SEPARATOR + INTRO + LINE_SEPARATOR);
-    }
-
-    @Override
-    public void printProductStatus(final List<ProductStatus> productStatuses) {
-        final String message = productStatuses.stream()
-                .map(productStatus -> String.format(PRODUCT_STATUS, productStatus.name(), productStatus.price(),
-                        convertToQuantityFormat(productStatus), productStatus.promotion()))
-                .collect(Collectors.joining(LINE_SEPARATOR));
-        printlnMessage(message);
-    }
-
-
-    @Override
-    public void printAskPurchaseProduct() {
-        printlnMessage(LINE_SEPARATOR + ASK_PURCHASE_PRODUCT);
-    }
-
-    @Override
-    public void printGuideNonPromotionProduct(final NonPromotionProduct nonPromotionProduct) {
-        printlnMessage(LINE_SEPARATOR + String.format(GUIDE_NON_PROMOTION_PRODUCT, nonPromotionProduct.name(),
-                nonPromotionProduct.quantity()));
-    }
+    public static final String LINE_SEPARATOR = System.lineSeparator();
+    public static final String ASK_MEMBER_SHIP_DISCOUNT = "멤버십 할인을 받으시겠습니까? (Y/N)";
+    public static final String PURCHASE_PRODUCT_LINE = "==============W 편의점================";
+    public static final String PURCHASE_PRODUCT_COLUMN = "상품명\t\t\t\t수량\t\t  금액";
+    public static final String NAME_AND_QUANTITY_AND_PRICE = "%-16s\t%,-9d %,-6d";
+    public static final String BENEFIT_PRODUCT_LINE = "=============증\t\t정===============";
+    public static final String NAME_AND_QUANTITY = "%-15s\t%,-9d";
+    public static final String NAME_AND_PRICE = "%-17s\t\t\t  %,-6d";
+    public static final String NAME_AND_DISCOUNT = "%-17s\t\t\t  -%,-6d";
+    public static final String PAYMENT_LINE = "====================================";
+    public static final String TOTAL_PRICE = "총구매액";
+    public static final String PROMOTION_DISCOUNT = "행사할인";
+    public static final String MEMBER_SHIP_DISCOUNT = "멤버십할인";
+    public static final String PAYMENT_PRICE = "내실돈";
+    public static final String ASK_RETRY_PURCHASE = "감사합니다. 구매하고 싶은 다른 상품이 있나요? (Y/N)";
 
     @Override
     public void printAskMemberShipDiscount() {
         printlnMessage(LINE_SEPARATOR + ASK_MEMBER_SHIP_DISCOUNT);
-    }
-
-    @Override
-    public void printGuidePromotionProduct(final PromotionProduct promotionProduct) {
-        printlnMessage(LINE_SEPARATOR + String.format(GUIDE_PROMOTION_PRODUCT, promotionProduct.name(),
-                promotionProduct.quantity()));
     }
 
     @Override
@@ -88,13 +66,6 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void printAskRetryPurchase() {
         printlnMessage(LINE_SEPARATOR + ASK_RETRY_PURCHASE);
-    }
-
-    private String convertToQuantityFormat(final ProductStatus productStatus) {
-        if (productStatus.quantity() == 0) {
-            return PRODUCT_HAS_NO_QUANTITY_FORMAT;
-        }
-        return String.format(PRODUCT_HAS_QUANTITY_FORMAT, productStatus.quantity());
     }
 
     private void printlnMessage(final String message) {

@@ -3,17 +3,21 @@ package store.config;
 import store.Convenience;
 import store.payment.controller.PaymentController;
 import store.payment.service.PaymentService;
+import store.payment.view.PaymentOutputView;
+import store.payment.view.console.ConsolePaymentOutputView;
 import store.product.controller.ProductController;
 import store.product.domain.ProductRepository;
 import store.product.service.ProductService;
 import store.product.service.PurchaseProductGenerator;
+import store.product.view.ProductOutputView;
+import store.product.view.console.ConsoleProductOutputView;
 import store.promotion.controller.PromotionController;
 import store.promotion.domain.PromotionRepository;
 import store.promotion.service.PromotionService;
-import store.view.console.ConsoleInputView;
-import store.view.console.ConsoleOutputView;
+import store.promotion.view.PromotionOutputView;
+import store.promotion.view.console.ConsolePromotionOutputView;
 import store.view.InputView;
-import store.view.OutputView;
+import store.view.console.ConsoleInputView;
 
 public class AppConfig {
 
@@ -63,14 +67,22 @@ public class AppConfig {
         return new ConsoleInputView();
     }
 
-    private OutputView outputView() {
-        return new ConsoleOutputView();
+    private ProductOutputView productOutputView() {
+        return new ConsoleProductOutputView();
+    }
+
+    private PromotionOutputView promotionOutputView() {
+        return new ConsolePromotionOutputView();
+    }
+
+    private PaymentOutputView paymentOutputView() {
+        return new ConsolePaymentOutputView();
     }
 
     private ProductController productController() {
         return new ProductController(
                 inputView(),
-                outputView(),
+                productOutputView(),
                 productService()
         );
     }
@@ -78,7 +90,7 @@ public class AppConfig {
     private PromotionController promotionController() {
         return new PromotionController(
                 inputView(),
-                outputView(),
+                promotionOutputView(),
                 promotionService()
         );
     }
@@ -86,7 +98,7 @@ public class AppConfig {
     private PaymentController paymentController() {
         return new PaymentController(
                 inputView(),
-                outputView(),
+                paymentOutputView(),
                 paymentService()
         );
     }

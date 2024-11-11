@@ -6,20 +6,20 @@ import store.error.ErrorMessage;
 import store.product.domain.PurchaseProduct;
 import store.product.dto.PurchaseProductRequest;
 import store.product.service.ProductService;
+import store.product.view.ProductOutputView;
 import store.state.PurchaseState;
 import store.util.LoopTemplate;
 import store.util.StringParser;
 import store.util.StringValidator;
 import store.view.InputView;
-import store.view.OutputView;
 
 public class ProductController {
 
     private final InputView inputView;
-    private final OutputView outputView;
+    private final ProductOutputView outputView;
     private final ProductService productService;
 
-    public ProductController(final InputView inputView, final OutputView outputView,
+    public ProductController(final InputView inputView, final ProductOutputView outputView,
                              final ProductService productService) {
         this.inputView = inputView;
         this.outputView = outputView;
