@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class PromotionDateTime {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
+    private static final int ZERO = 0;
     private final String startDate;
     private final String endDate;
 
@@ -18,8 +19,8 @@ public class PromotionDateTime {
     public boolean isInTime() {
         final LocalDateTime now = DateTimes.now();
         final String nowDate = now.format(DateTimeFormatter.ofPattern(DATE_FORMAT));
-        return nowDate.compareTo(startDate) >= 0
-                && nowDate.compareTo(endDate) <= 0;
+        return nowDate.compareTo(startDate) >= ZERO
+                && nowDate.compareTo(endDate) <= ZERO;
     }
 
 }

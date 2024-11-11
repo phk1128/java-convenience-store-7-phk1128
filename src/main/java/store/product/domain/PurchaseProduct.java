@@ -51,7 +51,8 @@ public class PurchaseProduct {
     public int calculateNonPromotionPrice() {
         final int nonPromotionQuantity = productQuantity.getNonPromotionQuantity();
         final int normalQuantity = productQuantity.getNormalQuantity();
-        return (nonPromotionQuantity * purchaseProductInfo.promotionPrice()) + (normalQuantity * purchaseProductInfo.normalPrice());
+        return (nonPromotionQuantity * purchaseProductInfo.promotionPrice()) + (normalQuantity
+                * purchaseProductInfo.normalPrice());
     }
 
     public int calculateTotalPrice() {

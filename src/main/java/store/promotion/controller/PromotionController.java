@@ -40,6 +40,7 @@ public class PromotionController {
         }
 
     }
+
     private void checkNonPromotion(final PurchaseProduct product) {
         final NonPromotionProduct nonPromotionProduct = promotionService.getNonPromotionProduct(product);
         if (promotionService.canNotReceivePromotion(nonPromotionProduct)) {

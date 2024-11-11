@@ -2,13 +2,13 @@ package store.product.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import store.promotion.domain.Promotion;
 import store.product.domain.Product;
-import store.product.domain.PurchaseProductInfo;
 import store.product.domain.ProductQuantity;
 import store.product.domain.ProductRepository;
 import store.product.domain.PurchaseProduct;
+import store.product.domain.PurchaseProductInfo;
 import store.product.dto.PurchaseProductRequest;
+import store.promotion.domain.Promotion;
 
 public class PurchaseProductGenerator {
 

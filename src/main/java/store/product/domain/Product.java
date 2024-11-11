@@ -5,6 +5,8 @@ import store.promotion.domain.Promotion;
 
 public class Product {
 
+    private static final String BLANK = "";
+    private static final int ZERO  = 0;
     private final long id;
     private final ProductInfo productInfo;
     private int quantity;
@@ -26,7 +28,7 @@ public class Product {
     public String getPromotionName() {
         final Promotion promotion = productInfo.promotion();
         if (Objects.equals(promotion, null)) {
-            return "";
+            return BLANK;
         }
         return promotion.getPromotionName();
     }
@@ -41,7 +43,7 @@ public class Product {
         if (!Objects.equals(promotion, null)) {
             return promotion.getRemainingQuantity(quantity);
         }
-        return 0;
+        return ZERO;
     }
 
     public int getBuyQuantity() {

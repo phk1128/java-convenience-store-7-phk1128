@@ -65,7 +65,7 @@ public class InitialDataLoader {
     private void saveProduct(final String line) {
         final List<String> tokens = StringParser.parseToTokens(line, DELIMITER_COMMA);
         final Long id = productSequence++;
-        final Product product = createProduct(id,tokens);
+        final Product product = createProduct(id, tokens);
         productRepository.save(id, product);
     }
 
