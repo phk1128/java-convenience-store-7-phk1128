@@ -1,5 +1,6 @@
 package store;
 
+import camp.nextstep.edu.missionutils.Console;
 import store.payment.controller.PaymentController;
 import store.product.controller.ProductController;
 import store.promotion.controller.PromotionController;
@@ -24,6 +25,7 @@ public class Convenience {
             promotionController.run();
             paymentController.run();
         } while (isRetryPurchase());
+        Console.close();
     }
 
     private boolean isRetryPurchase() {
