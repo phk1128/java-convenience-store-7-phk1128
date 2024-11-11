@@ -17,7 +17,7 @@ public class ConsolePaymentOutputView implements PaymentOutputView {
     public static final String BENEFIT_PRODUCT_LINE = "=============증\t\t정===============";
     public static final String NAME_AND_QUANTITY = "%-15s\t%,-9d";
     public static final String NAME_AND_PRICE = "%-17s\t\t\t  %,-6d";
-    public static final String NAME_AND_DISCOUNT = "%-17s\t\t\t  -%,-6d";
+    public static final String NAME_AND_DISCOUNT = "%-17s\t\t\t -%,-6d";
     public static final String PAYMENT_LINE = "====================================";
     public static final String TOTAL_PRICE = "총구매액";
     public static final String PROMOTION_DISCOUNT = "행사할인";
