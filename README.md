@@ -368,19 +368,22 @@ Y
 - [X] 결제 내역 응답
 - [X] 추가 구매 희망 여부 요청
 
-
 #### 4. view
 
 ##### ConsoleInputView
 - [X] 사용자가 입력한 구매 상품을 읽음
 - [X] 사용자가 입력한 커멘드를 읽음
 
-##### ConsoleOutputView
+##### ConsoleProductOutputView
 - [X] 인트로 출력
 - [X] 현재 상품 상태 출력
 - [X] 구매 상품 요청 메세지 출력
+
+##### ConsolePromotionOutputView
 - [X] 프로모션 비할인 여부 안내 출력
 - [X] 프로모션 할인 여부 안내 출력
+
+##### ConsolePaymentOutputView
 - [X] 멤버십 할인 여부 안내 출력
 - [X] 총 구매 상품 내역 출력
 - [X] 증정 상품 내역 출력
@@ -435,5 +438,39 @@ Y
 ##### StoreCommand
 - [X] 스토어 커멘드를 정의 (YES or NO)
 
-##### OutputMessage
-- [X] 출력 메세지를 정의
+### ✅ 클래스 다이어그램
+
+#### 1. Convenience
+![4주차_다이어그램_메인컨트롤러](https://github.com/user-attachments/assets/b9737c39-cca9-4ec0-a06f-4ca2cd431ae1)
+
+#### 2. State
+![4주차_다이어그램_state](https://github.com/user-attachments/assets/ac2e4b60-0897-4a7d-acbf-77b236634fa0)
+#### 3. Product
+##### Main
+![4주차_다이어그램_product_메인](https://github.com/user-attachments/assets/58b176cf-baf2-422b-af57-868e60a630d7)
+
+##### View
+![4주차_다이어그램_product_뷰](https://github.com/user-attachments/assets/ac817266-8c3d-41d0-b79e-64a0eb873ae3)
+
+#### 4. Promotion
+##### Main
+![4주차_다이어그램_promotion_메인](https://github.com/user-attachments/assets/b915505b-abc4-44fb-b1eb-e461c467a32c)
+
+##### View
+![4주차_다이어그램_promotion_뷰](https://github.com/user-attachments/assets/ea82846d-2105-4d34-8e2d-06435f843d74)
+
+#### 5. Payment
+##### Main
+![4주차_다이어그램_payment_메인](https://github.com/user-attachments/assets/622b276c-2641-4c10-91c1-f10409d14d84)
+
+##### View
+![4주차_다이어그램_payment_뷰](https://github.com/user-attachments/assets/f0dc0c0c-9944-48e7-a31f-665c866d3e1d)
+
+#### 6. InitialDataLoader
+![4주차_다이어그램_이니셜로더](https://github.com/user-attachments/assets/0b73d193-f6e9-46ce-b3bd-3c1c343a2f78)
+
+#### 7. AppConfig
+![4주차_다이어그램_config](https://github.com/user-attachments/assets/ef2e289a-94e0-4b72-99ce-82eeb0977865)
+
+#### 8. Util
+![4주차_다이어그램_유틸](https://github.com/user-attachments/assets/3ca1507c-7c61-4ca0-ba2c-5276efa32a8e)
