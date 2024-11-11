@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import store.error.ErrorMessage;
 import store.error.exception.ExceedsProductQuantityException;
+import store.error.exception.InvalidWrongInputException;
 import store.error.exception.NotFoundProductException;
 import store.product.domain.Product;
 import store.product.domain.ProductInfo;
@@ -71,13 +72,16 @@ public class ProductService {
 
     private void validateProductQuantity(final PurchaseProductRequest request) {
         final int count = productRepository.countByProductName(request.name());
-        if (count < request.quantity()) {
+        final int quantity = request.quantity();
+        if (count < quantity) {
             throw new ExceedsProductQuantityException(ErrorMessage.INVALID_EXCEEDS_PRODUCT_QUANTITY);
+        }
+        if (quantity <= INTEGER_ZERO) {
+            throw new InvalidWrongInputException(ErrorMessage.INVALID_WRONG_INPUT);
         }
     }
 
     private void validateProductDuplicate(final List<PurchaseProductRequest> requests) {
         ListValidator.validateDuplicate(requests, ErrorMessage.INVALID_WRONG_INPUT);
     }
-
 }
