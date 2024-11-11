@@ -11,7 +11,9 @@ import store.promotion.domain.PromotionType;
 public class PurchaseProductFixture {
 
     public static final PurchaseProduct PURCHASE_IN_TIME_PRODUCT = generatePurchaseProduct("0000-11-01", "9999-11-11", "콜라");
-    public static final List<PurchaseProduct> PURCHASE_PRODUCTS = List.of(generatePurchaseProduct("0000-11-01", "9999-11-11", "콜라"));
+    public static final List<PurchaseProduct> PURCHASE_PRODUCTS = List.of(
+            generatePurchaseProduct("0000-11-01", "9999-11-11", "콜라"),
+            generatePurchaseProduct("0000-11-01", "9999-11-11", "사이다"));
 
 
     private static PurchaseProduct generatePurchaseProduct(final String startTime, final String endTime, final String name) {
